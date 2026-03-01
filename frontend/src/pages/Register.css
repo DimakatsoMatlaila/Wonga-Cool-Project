@@ -1,0 +1,264 @@
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.register-container::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.register-container::after {
+  content: '';
+  position: absolute;
+  bottom: -25%;
+  left: -8%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(74, 159, 219, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.register-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 60px 50px;
+  border-radius: 20px;
+  box-shadow: 
+    0 10px 40px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.wonga-logo {
+  width: 200px;
+  height: auto;
+  margin: 0 auto 20px auto;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0, 102, 204, 0.15));
+}
+
+.register-card h1 {
+  color: #1a1a1a;
+  margin: 0 0 12px 0;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.register-card h2 {
+  color: #666;
+  margin: 0 0 35px 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.error-message {
+  background: linear-gradient(135deg, #FEE 0%, #FDD 100%);
+  color: var(--wonga-danger);
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  border-left: 4px solid var(--wonga-danger);
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(204, 51, 51, 0.1);
+}
+
+.error-message strong {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  margin-bottom: 28px;
+  border: none;
+  padding: 0;
+  background: none;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #2d3748;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 14px 4px;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  border-radius: 0;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+  background: transparent;
+}
+
+.form-group input:hover {
+  border-bottom-color: #cbd5e0;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-bottom-color: var(--wonga-blue);
+  box-shadow: 0 2px 0 0 var(--wonga-blue);
+  background: transparent;
+}
+
+.form-group input:disabled {
+  background-color: transparent;
+  cursor: not-allowed;
+  opacity: 0.6;
+  border-bottom-color: #e2e8f0;
+}
+
+.password-hint {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #718096;
+  line-height: 1.5;
+  padding: 8px 12px;
+  background: #f7fafc;
+  border-radius: 6px;
+  border-left: 3px solid #cbd5e0;
+}
+
+.register-button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--wonga-blue) 0%, var(--wonga-light-blue) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  margin-top: 8px;
+  box-shadow: 0 4px 15px rgba(0, 102, 204, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.register-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.register-button:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.register-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 102, 204, 0.35);
+}
+
+.register-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(0, 102, 204, 0.25);
+}
+
+.register-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 32px;
+  color: #718096;
+  font-size: 14px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.login-link a {
+  color: var(--wonga-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.login-link a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--wonga-blue);
+  transition: width 0.3s ease;
+}
+
+.login-link a:hover {
+  color: var(--wonga-dark-blue);
+}
+
+.login-link a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .register-card {
+    padding: 40px 30px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .register-card h1 {
+    font-size: 24px;
+  }
+
+  .wonga-logo {
+    font-size: 28px;
+  }
+}

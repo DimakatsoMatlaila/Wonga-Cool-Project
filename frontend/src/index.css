@@ -1,0 +1,41 @@
+:root {
+  /* Wonga Finance Brand Colors */
+  --wonga-blue: #0066CC;
+  --wonga-light-blue: #4A9FDB;
+  --wonga-lighter-blue: #E8F4FF;
+  --wonga-dark-blue: #004A99;
+  --wonga-white: #FFFFFF;
+  --wonga-gray-50: #F8F9FA;
+  --wonga-gray-100: #E9ECEF;
+  --wonga-gray-200: #DEE2E6;
+  --wonga-gray-600: #6C757D;
+  --wonga-gray-900: #212529;
+  --wonga-success: #28A745;
+  --wonga-danger: #DC3545;
+  --wonga-warning: #FFC107;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--wonga-gray-50);
+  color: var(--wonga-gray-900);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#root {
+  min-height: 100vh;
+}
