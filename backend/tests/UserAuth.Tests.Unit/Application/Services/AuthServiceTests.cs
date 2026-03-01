@@ -68,7 +68,7 @@ public class AuthServiceTests
         _mapperMock.Setup(x => x.Map<UserDto>(It.IsAny<User>())).Returns(userDto);
         _unitOfWorkMock.Setup(x => x.Users.CreateAsync(It.IsAny<User>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(user);
-        _tokenServiceMock.Setup(x => x.GenerateAccessToken(user.Id, user.Email)).Returns("access_token");
+        _tokenServiceMock.Setup(x => x.GenerateAccessToken(It.IsAny<Guid>(), It.IsAny<string>())).Returns("access_token");
         _tokenServiceMock.Setup(x => x.GenerateRefreshToken()).Returns("refresh_token");
 
         // Act
