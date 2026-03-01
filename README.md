@@ -5,11 +5,7 @@
 ![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)
 ![React](https://img.shields.io/badge/React-18-blue.svg)
 
-<!-- Once Codecov is configured, replace with actual badges:
-[![codecov](https://codecov.io/gh/YOUR-USERNAME/Wonga/branch/main/graph/badge.svg)](https://codecov.io/gh/YOUR-USERNAME/Wonga)
-[![Frontend Coverage](https://codecov.io/gh/YOUR-USERNAME/Wonga/branch/main/graph/badge.svg?flag=frontend)](https://codecov.io/gh/YOUR-USERNAME/Wonga)
-[![Backend Coverage](https://codecov.io/gh/YOUR-USERNAME/Wonga/branch/main/graph/badge.svg?flag=backend)](https://codecov.io/gh/YOUR-USERNAME/Wonga)
--->
+
 
 A full-stack user authentication application built with React, TypeScript, C# (.NET 8), PostgreSQL, and Docker. This application demonstrates modern software architecture patterns, comprehensive testing, and best practices.
 
