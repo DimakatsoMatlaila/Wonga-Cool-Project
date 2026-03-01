@@ -2,7 +2,6 @@
 
 [![codecov](https://codecov.io/gh/DimakatsoMatlaila/Wonga-Cool-Project/graph/badge.svg?token=WZY01YJ0LJ)](https://codecov.io/gh/DimakatsoMatlaila/Wonga-Cool-Project)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Frontend Coverage](https://img.shields.io/badge/coverage-91.37%25-brightgreen.svg)
 ![.NET](https://img.shields.io/badge/.NET-8.0-blue.svg)
 ![React](https://img.shields.io/badge/React-18-blue.svg)
 
