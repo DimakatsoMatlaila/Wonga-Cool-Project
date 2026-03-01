@@ -428,23 +428,10 @@ dotnet test tests/UserAuth.Tests.Integration
 #### Run with coverage
 ```bash
 cd backend
-./coverage.bat
+coverage.bat
 ```
 
-### Full Stack Coverage
-
-Run tests and generate coverage for both frontend and backend:
-
-```bash
-# From repository root
-./coverage.bat
-```
-
-This generates HTML reports for both projects:
-- Frontend: `frontend/coverage/index.html`  
-- Backend: `backend/CoverageReport/index.html`
-
-📊 **See [COVERAGE.md](COVERAGE.md) for detailed coverage documentation and Codecov integration.**
+This generates an HTML coverage report at `backend/CoverageReport/index.html`
 
 ## 📚 API Documentation
 
@@ -523,80 +510,141 @@ For complete API documentation, visit http://localhost:5000/swagger when running
 
 ```
 Wonga/
-├── frontend/                     # React TypeScript frontend
-│   ├── public/                   # Static assets
-│   │   ├── assets/              # Images, icons, favicon
-│   │   └── index.html           # HTML template
+├── frontend/                                 # React TypeScript frontend
+│   ├── public/                              # Static assets
+│   │   └── assets/                          # Images, icons, favicon
 │   ├── src/
-│   │   ├── components/          # Reusable React components
-│   │   │   └── ProtectedRoute.tsx
-│   │   ├── pages/               # Page components
-│   │   │   ├── Login.tsx        # Login page
-│   │   │   ├── Register.tsx     # Registration page
-│   │   │   └── Profile.tsx      # User profile page
-│   │   ├── services/            # API service layer
-│   │   │   └── authService.ts   # Authentication API calls
-│   │   ├── store/               # State management (Zustand)
-│   │   │   └── authStore.ts     # Auth state and actions
-│   │   ├── types/               # TypeScript type definitions
-│   │   │   └── auth.ts          # Auth-related types
-│   │   ├── test/                # Test files
-│   │   │   ├── components/      # Component tests
-│   │   │   ├── pages/           # Page tests
-│   │   │   ├── services/        # Service tests
-│   │   │   ├── store/           # Store tests
-│   │   │   └── integration/     # Integration tests
-│   │   ├── App.tsx              # Root component with routing
-│   │   ├── main.tsx             # Application entry point
-│   │   └── index.css            # Global styles
-│   ├── .env.example             # Environment variables template
-│   ├── package.json             # NPM dependencies and scripts
-│   ├── vite.config.ts           # Vite configuration
-│   ├── vitest.config.ts         # Vitest test configuration
-│   ├── tsconfig.json            # TypeScript configuration
-│   └── Dockerfile               # Frontend container definition
+│   │   ├── components/                      # Reusable React components
+│   │   │   └── ProtectedRoute.tsx          # Route protection wrapper
+│   │   ├── pages/                          # Page components
+│   │   │   ├── Login.tsx                   # Login page
+│   │   │   ├── Login.css                   # Login page styles
+│   │   │   ├── Register.tsx                # Registration page
+│   │   │   ├── Register.css                # Registration page styles
+│   │   │   ├── Profile.tsx                 # User profile page
+│   │   │   └── Profile.css                 # Profile page styles
+│   │   ├── services/                       # API service layer
+│   │   │   └── authService.ts              # Authentication API calls
+│   │   ├── store/                          # State management (Zustand)
+│   │   │   └── authStore.ts                # Auth state and actions
+│   │   ├── types/                          # TypeScript type definitions
+│   │   │   └── auth.ts                     # Auth-related types
+│   │   ├── test/                           # Test files
+│   │   │   ├── components/
+│   │   │   │   └── ProtectedRoute.test.tsx # ProtectedRoute tests
+│   │   │   ├── pages/
+│   │   │   │   ├── Login.test.tsx          # Login page tests
+│   │   │   │   ├── Register.test.tsx       # Register page tests
+│   │   │   │   └── Profile.test.tsx        # Profile page tests
+│   │   │   ├── services/
+│   │   │   │   └── authService.test.ts     # Auth service tests
+│   │   │   ├── store/
+│   │   │   │   └── authStore.test.ts       # Auth store tests
+│   │   │   ├── integration/                # Integration tests
+│   │   │   └── setup.ts                    # Test configuration
+│   │   ├── App.tsx                         # Root component with routing
+│   │   ├── main.tsx                        # Application entry point
+│   │   ├── index.css                       # Global styles
+│   │   └── vite-env.d.ts                   # Vite type definitions
+│   ├── .dockerignore                       # Docker ignore rules
+│   ├── .env.example                        # Environment variables template
+│   ├── .eslintrc.cjs                       # ESLint configuration
+│   ├── .gitignore                          # Git ignore rules
+│   ├── Dockerfile                          # Frontend container definition
+│   ├── index.html                          # HTML entry point
+│   ├── nginx.conf                          # Nginx configuration
+│   ├── package.json                        # NPM dependencies and scripts
+│   ├── package-lock.json                   # NPM lock file
+│   ├── README.md                           # Frontend documentation
+│   ├── tsconfig.json                       # TypeScript configuration
+│   ├── tsconfig.node.json                  # TypeScript node configuration
+│   ├── vite.config.ts                      # Vite configuration
+│   └── vitest.config.ts                    # Vitest test configuration
 │
-├── backend/                      # .NET 8 C# backend
+├── backend/                                 # .NET 8 C# backend
 │   ├── src/
-│   │   ├── UserAuth.Domain/      # Domain entities and interfaces
-│   │   │   ├── Entities/        # User, RefreshToken entities
-│   │   │   ├── Repositories/    # Repository interfaces
-│   │   │   └── Common/          # Base entities
-│   │   ├── UserAuth.Application/ # Business logic and DTOs
-│   │   │   ├── Services/        # Service interfaces & implementations
-│   │   │   ├── DTOs/            # Data Transfer Objects
-│   │   │   ├── Validators/      # FluentValidation validators
-│   │   │   └── Mappings/        # AutoMapper profiles
-│   │   ├── UserAuth.Infrastructure/ # Data access and external services
-│   │   │   ├── Persistence/     # EF Core DbContext
-│   │   │   ├── Repositories/    # Repository implementations
-│   │   │   ├── Services/        # External service implementations
-│   │   │   └── Migrations/      # EF Core migrations
-│   │   └── UserAuth.API/         # API controllers and configuration
-│   │       ├── Controllers/     # API endpoints
-│   │       ├── Middleware/      # Custom middleware
-│   │       ├── Properties/      # Launch settings
-│   │       ├── appsettings.json # Configuration
-│   │       └── Program.cs       # Application entry point
+│   │   ├── UserAuth.Domain/                # Domain layer (Core)
+│   │   │   ├── Common/                     # Shared domain entities
+│   │   │   │   └── BaseEntity.cs          # Base entity class
+│   │   │   ├── Entities/                  # Domain entities
+│   │   │   │   ├── User.cs                # User entity
+│   │   │   │   └── RefreshToken.cs        # Refresh token entity
+│   │   │   ├── Repositories/              # Repository interfaces
+│   │   │   │   ├── IUserRepository.cs     # User repository interface
+│   │   │   │   └── IUnitOfWork.cs         # Unit of work interface
+│   │   │   └── UserAuth.Domain.csproj     # Domain project file
+│   │   │
+│   │   ├── UserAuth.Application/           # Application layer (Business logic)
+│   │   │   ├── Common/
+│   │   │   │   └── Exceptions/            # Custom exceptions
+│   │   │   ├── DTOs/
+│   │   │   │   └── Auth/                  # Authentication DTOs
+│   │   │   ├── Mappings/
+│   │   │   │   └── MappingProfile.cs      # AutoMapper profiles
+│   │   │   ├── Services/                  # Service interfaces
+│   │   │   │   ├── IAuthService.cs        # Auth service interface
+│   │   │   │   ├── ITokenService.cs       # Token service interface
+│   │   │   │   └── Impl/                  # Service implementations
+│   │   │   ├── Validators/                # FluentValidation validators
+│   │   │   │   ├── LoginRequestValidator.cs       # Login validation
+│   │   │   │   └── RegisterRequestValidator.cs    # Register validation
+│   │   │   ├── DependencyInjection.cs     # DI configuration
+│   │   │   └── UserAuth.Application.csproj # Application project file
+│   │   │
+│   │   ├── UserAuth.Infrastructure/        # Infrastructure layer (Data access)
+│   │   │   ├── Migrations/                # EF Core migrations
+│   │   │   │   ├── 20260227161004_InitialCreate.cs
+│   │   │   │   ├── 20260227161004_InitialCreate.Designer.cs
+│   │   │   │   └── ApplicationDbContextModelSnapshot.cs
+│   │   │   ├── Persistence/               # Database context
+│   │   │   │   ├── ApplicationDbContext.cs    # EF Core DbContext
+│   │   │   │   └── Configurations/           # Entity configurations
+│   │   │   ├── Repositories/              # Repository implementations
+│   │   │   │   ├── UserRepository.cs      # User repository
+│   │   │   │   └── UnitOfWork.cs          # Unit of work
+│   │   │   ├── Services/                  # External services
+│   │   │   ├── DependencyInjection.cs     # DI configuration
+│   │   │   └── UserAuth.Infrastructure.csproj # Infrastructure project file
+│   │   │
+│   │   └── UserAuth.API/                   # API layer (Presentation)
+│   │       ├── Controllers/                # API controllers
+│   │       │   └── AuthController.cs      # Authentication endpoints
+│   │       ├── Middleware/                 # Custom middleware
+│   │       │   └── ExceptionHandlingMiddleware.cs
+│   │       ├── Properties/
+│   │       │   └── launchSettings.json    # Launch configuration
+│   │       ├── appsettings.json           # Production configuration
+│   │       ├── appsettings.Development.json # Development configuration
+│   │       ├── Program.cs                  # Application entry point
+│   │       └── UserAuth.API.csproj        # API project file
+│   │
 │   ├── tests/
-│   │   ├── UserAuth.Tests.Unit/  # Unit tests
-│   │   └── UserAuth.Tests.Integration/ # Integration tests
-│   ├── Dockerfile               # Backend container definition
-│   ├── coverage.bat             # Backend coverage script
-│   └── UserAuth.sln             # Solution file
+│   │   ├── UserAuth.Tests.Unit/            # Unit tests
+│   │   │   ├── Application/               # Application layer tests
+│   │   │   ├── Infrastructure/            # Infrastructure layer tests
+│   │   │   ├── Usings.cs                  # Global usings
+│   │   │   └── UserAuth.Tests.Unit.csproj # Test project file
+│   │   │
+│   │   └── UserAuth.Tests.Integration/     # Integration tests
+│   │       ├── Controllers/               # Controller integration tests
+│   │       ├── Usings.cs                  # Global usings
+│   │       └── UserAuth.Tests.Integration.csproj # Test project file
+│   │
+│   ├── .gitignore                          # Git ignore rules
+│   ├── coverage.bat                        # Backend coverage script
+│   ├── Dockerfile                          # Backend container definition
+│   ├── README.md                           # Backend documentation
+│   └── UserAuth.sln                        # Visual Studio solution file
 │
 ├── .github/
 │   └── workflows/
-│       └── coverage.yml         # GitHub Actions CI/CD
+│       └── coverage.yml                    # GitHub Actions CI/CD workflow
 │
-├── docker-compose.yml           # Development Docker Compose
-├── docker-compose.prod.yml      # Production Docker Compose
-├── coverage.bat                 # Full stack coverage script
-├── codecov.yml                  # Codecov configuration
-├── .gitignore                   # Git ignore rules
-├── .env.example                 # Environment variables template
-├── README.md                    # This file
-└── COVERAGE.md                  # Coverage documentation
+├── .env.example                             # Environment variables template
+├── .gitignore                               # Root Git ignore rules
+├── docker-compose.yml                       # Development Docker Compose
+├── docker-compose.prod.yml                  # Production Docker Compose
+└── README.md                                # This file - Main documentation
 ```
 
 ## 💻 Development
