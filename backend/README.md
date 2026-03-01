@@ -138,9 +138,34 @@ dotnet test tests/UserAuth.Tests.Unit --verbosity normal
 dotnet test tests/UserAuth.Tests.Integration --verbosity normal
 ```
 
-### All Tests with Coverage
+### All Tests
 ```bash
-dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+dotnet test --verbosity normal
+```
+
+### Code Coverage
+
+**Quick Coverage (Console Output)**:
+```bash
+dotnet test --collect:"XPlat Code Coverage"
+```
+
+**HTML Coverage Report**:
+```bash
+# Install ReportGenerator (one-time)
+dotnet tool install -g dotnet-reportgenerator-globaltool
+
+# Run tests with coverage and generate HTML report
+dotnet test --collect:"XPlat Code Coverage" --results-directory ./TestResults
+reportgenerator -reports:"./TestResults/**/coverage.cobertura.xml" -targetdir:"./CoverageReport" -reporttypes:Html
+
+# Open the report
+start ./CoverageReport/index.html
+```
+
+**Or use the coverage script**:
+```bash
+./coverage.bat  # Windows
 ```
 
 ## Database Migrations
