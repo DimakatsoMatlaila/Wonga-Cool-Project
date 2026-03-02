@@ -433,6 +433,18 @@ coverage.bat
 
 This generates an HTML coverage report at `backend/CoverageReport/index.html`
 
+## 📸 Screenshots
+
+### Login Page
+![Login Page](screenshots/login.png)
+
+### Registration Page
+![Register Page](screenshots/register.png)
+
+### User Profile Page
+![Profile Page](screenshots/profile.png)
+
+
 ## 📚 API Documentation
 
 ### Base URL
