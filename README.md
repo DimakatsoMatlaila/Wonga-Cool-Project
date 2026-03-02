@@ -439,7 +439,7 @@ This generates an HTML coverage report at `backend/CoverageReport/index.html`
 ![Login Page](screenshots/login.png)
 
 ### Registration Page
-![Register Page](screenshots/register.png)
+![Register Page](screenshots/registration.png)
 
 ### User Profile Page
 ![Profile Page](screenshots/profile.png)
